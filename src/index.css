@@ -1,13 +1,110 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply box-border m-0 p-0;
+    }
+    html {
+        @apply text-[62.5%];
+    }
+    body {
+        @apply text-[1.4rem] leading-[1.5];
+    }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+    .boxShadownHeader {
+        box-shadow: 0px 1px 10px #6cf0f4;
+    }
+
+    .linearMain {
+        background: linear-gradient(90deg, #926533 0%, #F5D580 50%, #926533 100%);
+    }
+
+    .text-linear {
+        background: linear-gradient(90deg, #926533 0%, #F5D580 50%, #926533 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .box-shadow-card-service {
+        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.18);
+    }
+
+    .box-shadow-card-service-2 {
+        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.18);
+    }
+
+    
+    .box-shadow-admin-notice {
+        box-shadow: 0px 0px 8px -2px #a39595;
+    }
+
+    .polish {
+        background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+        transform: skewX(-25deg);
+    }
+    
+    .dotThreeHiddenText {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    
+    .scrollbar-admin-sidebar::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+        display: block;
+    }
+    
+    .scrollbar-admin-sidebar::-webkit-scrollbar-track {
+        background: #fff;
+    }
+    
+    .scrollbar-admin-sidebar::-webkit-scrollbar-thumb {
+        background: #DFDFDF;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+
+    .scrollbar-admin-sidebar-none::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+:root {
+    --height-header: 80px;
+
+    --color-outstanding: #b97e3b;
+
+    
+    --admin-height-header: 60px;
+    --admin-width-sidebar: 280px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #d4d1d7;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8e8989;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    display: block;
 }
