@@ -29,7 +29,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "cross-env PORT=80 react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"
@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^5.0.0",
+    "cross-env": "^7.0.3",
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.2.1",
     "tailwindcss": "^3.4.1"
