@@ -100,7 +100,6 @@ function ListService() {
                 }`,
             );
 
-            console.log(res.data)
 
             if (res.data.success) {
                 setData({

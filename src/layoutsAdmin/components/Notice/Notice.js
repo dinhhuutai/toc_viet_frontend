@@ -10,7 +10,6 @@ function Notice() {
     const tmp = useSelector(noticeAdminSelector);
     const [notice, setNotice] = useState()
 
-
     useEffect(() => {
         setNotice(tmp);
     }, [tmp]);

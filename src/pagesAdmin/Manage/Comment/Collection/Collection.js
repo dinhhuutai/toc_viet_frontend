@@ -31,10 +31,17 @@ function Collection() {
         } catch (error) {}
     };
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    }, []);
+
     return (
         <div className="py-[10px] px-[14px]">
             <div className="bg-[#fff] box-shadow-card-service-2 px-[20px] py-[10px] rounded-[4px] text-[15px] uppercase font-[600]">
-                Bình luận trong bộ sưu tập
+                Bình luận bộ sưu tập
             </div>
             <div className="min-h-screen bg-[#fff] rounded-[4px] box-shadow-card-service mt-[10px] px-[20px] pt-[20px] pb-[60px]">
                 <div className='grid grid-cols-2 gap-[12px]'>

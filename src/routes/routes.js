@@ -10,6 +10,7 @@ import CollectionDetail from "~/pages/CollectionDetail";
 import Train from '~/pages/Train';
 import Contact from '~/pages/Contact';
 import Cart from '~/pages/Cart';
+import BuyProduct from '~/pages/BuyProduct';
 
 
 import AdminAnalytics from "~/pagesAdmin/Menu/Dashboards/Analytics";
@@ -42,7 +43,15 @@ import AdminProductUpdate from '~/pagesAdmin/Manage/Product/Update';
 import AdminCommentCollection from '~/pagesAdmin/Manage/Comment/Collection';
 import AdminCommentCollectionDetail from '~/pagesAdmin/Manage/Comment/Collection/CollectionDetail';
 import AdminCommentProduct from '~/pagesAdmin/Manage/Comment/Product';
+import AdminCommentProductDetail from '~/pagesAdmin/Manage/Comment/Product/ProductDetail';
 import AdminCommentService from '~/pagesAdmin/Manage/Comment/Service';
+import AdminCommentServiceDetail from '~/pagesAdmin/Manage/Comment/Service/ServiceDetail';
+
+import AdminOrderWait from '~/pagesAdmin/Manage/Order/Wait';
+import AdminOrderProcessing from '~/pagesAdmin/Manage/Order/Processing';
+import AdminOrderSuccesse from '~/pagesAdmin/Manage/Order/Successed';
+import AdminOrderCancel from '~/pagesAdmin/Manage/Order/Cancel';
+
 
 
 export const routes = [
@@ -66,6 +75,11 @@ export const routes = [
     {
         path: config.routes.productDetail,
         component: ProductDetail,
+        isParams: true,
+    },
+    {
+        path: config.routes.buyProduct,
+        component: BuyProduct,
         isParams: true,
     },
     {
@@ -214,8 +228,40 @@ export const routesAdmin = [
         login: true,
     },
     {
+        path: config.routes.adminCommentProductDetail,
+        component: AdminCommentProductDetail,
+        login: true,
+        addId: true,
+    },
+    {
         path: config.routes.adminCommentService,
         component: AdminCommentService,
+        login: true,
+    },
+    {
+        path: config.routes.adminCommentServiceDetail,
+        component: AdminCommentServiceDetail,
+        login: true,
+        addId: true,
+    },
+    {
+        path: config.routes.adminOrderWait,
+        component: AdminOrderWait,
+        login: true,
+    },
+    {
+        path: config.routes.adminOrderProcessing,
+        component: AdminOrderProcessing,
+        login: true,
+    },
+    {
+        path: config.routes.adminOrderSuccessed,
+        component: AdminOrderSuccesse,
+        login: true,
+    },
+    {
+        path: config.routes.adminOrderCancel,
+        component: AdminOrderCancel,
         login: true,
     },
 ];

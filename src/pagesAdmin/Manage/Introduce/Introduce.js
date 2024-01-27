@@ -163,7 +163,6 @@ function Introduce() {
     const getData = async () => {
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/v1/introduce/get`);
 
-        console.log(res.data)
         if (res.data.length === 1) {
             setId(res.data.salon._id);
             setAddress(res.data.salon.address);

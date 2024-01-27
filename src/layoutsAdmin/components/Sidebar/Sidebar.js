@@ -11,9 +11,13 @@ import {
     BsBox,
     BsArchive,
     BsChatText,
+    BsClipboardMinus,
 } from 'react-icons/bs';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import config from '~/config';
+
+import { noteNewCommentAndOrderSelector } from '~/redux/selectors';
+import { useSelector } from 'react-redux';
 
 function Sidebar({ setOpenMenuMobi }) {
     const [downDashboard, setDownDashboard] = useState(false);
@@ -24,6 +28,7 @@ function Sidebar({ setOpenMenuMobi }) {
     const [downService, setDownService] = useState(false);
     const [downProduct, setDownProduct] = useState(false);
     const [downComment, setDownComment] = useState(false);
+    const [downOrder, setDownOrder] = useState(false);
 
     const hiddenItem = (key) => {
         key !== 'dashboard' && setDownDashboard(false);
@@ -33,7 +38,17 @@ function Sidebar({ setOpenMenuMobi }) {
         key !== 'service' && setDownService(false);
         key !== 'product' && setDownProduct(false);
         key !== 'comment' && setDownComment(false);
+        key !== 'order' && setDownOrder(false);
     };
+
+    const tmp = useSelector(noteNewCommentAndOrderSelector);
+    const [noteNewCommentAndOrder, setNoteNewCommentAndOrder] = useState();
+
+    useEffect(() => {
+        setNoteNewCommentAndOrder(tmp);
+    }, [tmp]);
+
+    console.log(noteNewCommentAndOrder);
 
     return (
         <div className="hover:scrollbar-admin-sidebar w-full h-full shadow-lg shadow-indigo-500/50 overflow-y-auto scrollbar-admin-sidebar-none group/parent">
@@ -455,6 +470,123 @@ function Sidebar({ setOpenMenuMobi }) {
                         <li>
                             <li
                                 onClick={() => {
+                                    hiddenItem('order');
+                                    setDownOrder((prev) => !prev);
+                                }}
+                                className="flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group"
+                            >
+                                <div className="text-[#999797] group-hover:text-[#333] text-[20px] w-[34px] flex justify-center">
+                                    <BsClipboardMinus />
+                                </div>
+                                <span
+                                    className={`${
+                                        downOrder
+                                            ? 'text-[13px] flex-1 ml-[6px] font-[600]'
+                                            : 'text-[13px] flex-1 ml-[6px]'
+                                    } capitalize`}
+                                >
+                                    <p className="relative">
+                                        Đơn hàng
+                                        {noteNewCommentAndOrder?.order ? (
+                                            <span className="absolute top-0 right-[6px] text-[10px] h-[20px] w-[20px] flex justify-center items-center rounded-[50%] bg-[#dd3a3a] text-[#fff]">
+                                                {noteNewCommentAndOrder?.order <= 9
+                                                    ? noteNewCommentAndOrder?.order
+                                                    : '9+'}
+                                            </span>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </p>
+                                </span>
+                                <div
+                                    className={`${
+                                        downOrder ? 'rotate-[180deg]' : 'rotate-[0deg]'
+                                    } ease-linear duration-[.2s] text-[#999797] group-hover:text-[#333] text-[12px] mr-[10px]`}
+                                >
+                                    <BsChevronDown />
+                                </div>
+                            </li>
+                            <ul
+                                className={`${
+                                    downOrder ? 'animate-downSlide2' : 'animate-upSlide2'
+                                } overflow-hidden pl-[28px] pt-[4px] relative before:content-[""] before:left-[16px] before:absolute before:w-[2px] before:h-full before:bg-[#c0cfd8]`}
+                            >
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
+                                    <NavLink
+                                        to={config.routes.adminOrderWait}
+                                        className={(nav) =>
+                                            nav.isActive
+                                                ? 'font-[600] text-[#3F6AD8] py-[6px] px-[22px] block w-full'
+                                                : 'font-[400] py-[6px] px-[22px] block w-full'
+                                        }
+                                    >
+                                        <p className="relative">
+                                            Mới
+                                            {noteNewCommentAndOrder?.order ? (
+                                                <span className="absolute top-0 right-0 text-[10px] h-[20px] w-[20px] flex justify-center items-center rounded-[50%] bg-[#dd3a3a] text-[#fff]">
+                                                    {noteNewCommentAndOrder?.order <= 9
+                                                        ? noteNewCommentAndOrder?.order
+                                                        : '9+'}
+                                                </span>
+                                            ) : (
+                                                ''
+                                            )}
+                                        </p>
+                                    </NavLink>
+                                </li>
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
+                                    <NavLink
+                                        to={config.routes.adminOrderProcessing}
+                                        className={(nav) =>
+                                            nav.isActive
+                                                ? 'font-[600] text-[#3F6AD8] py-[6px] px-[22px] block w-full'
+                                                : 'font-[400] py-[6px] px-[22px] block w-full'
+                                        }
+                                    >
+                                        Đang xử lý
+                                    </NavLink>
+                                </li>
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
+                                    <NavLink
+                                        to={config.routes.adminOrderSuccessed}
+                                        className={(nav) =>
+                                            nav.isActive
+                                                ? 'font-[600] text-[#3F6AD8] py-[6px] px-[22px] block w-full'
+                                                : 'font-[400] py-[6px] px-[22px] block w-full'
+                                        }
+                                    >
+                                        Đã giao
+                                    </NavLink>
+                                </li>
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
+                                    <NavLink
+                                        to={config.routes.adminOrderCancel}
+                                        className={(nav) =>
+                                            nav.isActive
+                                                ? 'font-[600] text-[#3F6AD8] py-[6px] px-[22px] block w-full'
+                                                : 'font-[400] py-[6px] px-[22px] block w-full'
+                                        }
+                                    >
+                                        Đã hủy
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <li
+                                onClick={() => {
                                     hiddenItem('comment');
                                     setDownComment((prev) => !prev);
                                 }}
@@ -470,7 +602,25 @@ function Sidebar({ setOpenMenuMobi }) {
                                             : 'text-[13px] flex-1 ml-[6px]'
                                     } capitalize`}
                                 >
-                                    Bình luận
+                                    <p className="relative">
+                                        Bình luận
+                                        {noteNewCommentAndOrder?.commentCollection +
+                                        noteNewCommentAndOrder?.commentProduct +
+                                        noteNewCommentAndOrder?.commentService ? (
+                                            <span className="absolute top-0 right-[6px] text-[10px] h-[20px] w-[20px] flex justify-center items-center rounded-[50%] bg-[#dd3a3a] text-[#fff]">
+                                                {noteNewCommentAndOrder?.commentCollection +
+                                                    noteNewCommentAndOrder?.commentProduct +
+                                                    noteNewCommentAndOrder?.commentService <=
+                                                9
+                                                    ? noteNewCommentAndOrder?.commentCollection +
+                                                      noteNewCommentAndOrder?.commentProduct +
+                                                      noteNewCommentAndOrder?.commentService
+                                                    : '9+'}
+                                            </span>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </p>
                                 </span>
                                 <div
                                     className={`${
@@ -497,7 +647,18 @@ function Sidebar({ setOpenMenuMobi }) {
                                                 : 'font-[400] py-[6px] px-[22px] block w-full'
                                         }
                                     >
-                                        Bộ sưu tập
+                                        <p className="relative">
+                                            Bộ sưu tập
+                                            {noteNewCommentAndOrder?.commentCollection ? (
+                                                <span className="absolute top-0 right-0 text-[10px] h-[20px] w-[20px] flex justify-center items-center rounded-[50%] bg-[#dd3a3a] text-[#fff]">
+                                                    {noteNewCommentAndOrder?.commentCollection <= 9
+                                                        ? noteNewCommentAndOrder?.commentCollection
+                                                        : '9+'}
+                                                </span>
+                                            ) : (
+                                                ''
+                                            )}
+                                        </p>
                                     </NavLink>
                                 </li>
                                 <li
@@ -512,7 +673,18 @@ function Sidebar({ setOpenMenuMobi }) {
                                                 : 'font-[400] py-[6px] px-[22px] block w-full'
                                         }
                                     >
-                                        Sản phẩm
+                                        <p className="relative">
+                                            Sản phẩm
+                                            {noteNewCommentAndOrder?.commentProduct ? (
+                                                <span className="absolute top-0 right-0 text-[10px] h-[20px] w-[20px] flex justify-center items-center rounded-[50%] bg-[#dd3a3a] text-[#fff]">
+                                                    {noteNewCommentAndOrder?.commentProduct <= 9
+                                                        ? noteNewCommentAndOrder?.commentProduct
+                                                        : '9+'}
+                                                </span>
+                                            ) : (
+                                                ''
+                                            )}
+                                        </p>
                                     </NavLink>
                                 </li>
                                 <li
@@ -527,7 +699,18 @@ function Sidebar({ setOpenMenuMobi }) {
                                                 : 'font-[400] py-[6px] px-[22px] block w-full'
                                         }
                                     >
-                                        Dịch vụ
+                                        <p className="relative">
+                                            Dịch vụ
+                                            {noteNewCommentAndOrder?.commentService ? (
+                                                <span className="absolute top-0 right-0 text-[10px] h-[20px] w-[20px] flex justify-center items-center rounded-[50%] bg-[#dd3a3a] text-[#fff]">
+                                                    {noteNewCommentAndOrder?.commentService <= 9
+                                                        ? noteNewCommentAndOrder?.commentService
+                                                        : '9+'}
+                                                </span>
+                                            ) : (
+                                                ''
+                                            )}
+                                        </p>
                                     </NavLink>
                                 </li>
                             </ul>

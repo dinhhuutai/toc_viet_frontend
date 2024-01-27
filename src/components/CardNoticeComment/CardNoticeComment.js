@@ -36,7 +36,7 @@ function CardNoticeComment({ data }) {
     return (
         <div className="flex items-center border-[1px] border-solid border-[#999595] rounded-[4px] px-[6px] py-[4px]">
             <div className="h-[80px] w-[80px] overflow-hidden rounded-[2px] ">
-                <img className="w-full h-full object-cover" alt="toc_viet" src={data.images[0]} />
+                <img className="w-full h-full object-cover" alt="toc_viet" src={data.images ? data.images[0] : data.image} />
             </div>
             <div className="flex-1 ml-[12px]">
                 <div>

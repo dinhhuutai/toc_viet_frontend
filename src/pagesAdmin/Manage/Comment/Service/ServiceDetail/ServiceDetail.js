@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
-import { BsFillStarFill } from 'react-icons/bs';
+import { useParams } from 'react-router-dom';
 import Comment from './Comment';
 import Pagination from '~/components/Pagination';
-import config from '~/config';
+import { BsFillStarFill } from 'react-icons/bs';
 
-function ProductDetail() {
+function ServiceDetail() {
     const [datas, setDatas] = useState([]);
-    const [star, setStar] = useState(0);
-    const [percentStar, setPercentStar] = useState(0);
     const { id } = useParams();
     const [currentPage, setCurrentPage] = useState(0);
-    const [hiddenInfo, setHiddenInfo] = useState(true);
+    const [star, setStar] = useState(0);
+    const [percentStar, setPercentStar] = useState(0);
 
     useEffect(() => {
         getData();
@@ -20,22 +18,24 @@ function ProductDetail() {
 
     const getData = async () => {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/v1/product/getSingle/${id}`);
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/v1/service/getSingle/${id}`);
+
 
             if (res.data.success) {
-                setDatas(res.data.product);
+                setDatas(res.data.service);
 
-                let starTemp = res.data.product.comment.reduce((btt, gtht, index) => {
+                let starTemp = res.data.service.comment.reduce((btt, gtht, index) => {
                     return btt + gtht.star * 1;
                 }, 0);
 
-                starTemp = (starTemp / res.data.product.comment.length).toFixed(1);
+                starTemp = (starTemp / res.data.service.comment.length).toFixed(1);
 
                 setStar(starTemp);
                 setPercentStar((starTemp / 5).toFixed(2) * 100);
             }
         } catch (error) {}
     };
+
 
     useEffect(() => {
         window.scrollTo({
@@ -46,10 +46,10 @@ function ProductDetail() {
 
     return (
         <div className="bg-[#f5f5f5] w-full min-h-screen py-[20px]">
-            <div className="bg-[#fff] boxShadownHeader mx-[80px] py-[30px] px-[40px] rounded-[2px] grid grid-cols-3">
+            <div className="bg-[#fff] mx-[20px] box-shadow-card-service py-[30px] px-[40px] rounded-[2px] grid grid-cols-3">
                 <div className="flex justify-center">
                     <div className="w-[300px] h-[300px] border-[1px] border-solid border-[#bab5b5] overflow-hidden rounded-[2px]">
-                        <img className="w-full h-full object-cover" alt={`toc_viet_${datas.name}`} src={datas.image} />
+                        <img className="w-full h-full object-cover" alt={`toc_viet_${datas.name}`} src={datas?.image} />
                     </div>
                 </div>
                 <div className="col-span-2">
@@ -99,34 +99,10 @@ function ProductDetail() {
                                 <p className="ml-[6px]">Đánh Giá</p>
                             </div>
                         </div>
-                        <div className="flex mt-[20px] items-center">
-                            <div className="flex text-[red] items-center">
-                                <p className="text-[14px] underline">đ</p>
-                                <p className="text-[20px] font-[400] ml-[2px]">
-                                    {datas.price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
-                                </p>
-                            </div>
-                            <div className="ml-[60px]">
-                                <Link to={`${config.routes.buyProduct}/${id}`} className="px-[60px] py-[10px] rounded-[2px] cursor-pointer uppercase bg-[#f67441] text-[#fff]">
-                                    Mua ngay
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="mt-[20px]">
-                            <label>Mô tả dịch vụ:</label>
-                            <div className={`${hiddenInfo ? 'h-[100px] overflow-hidden after:content-[""] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[30px] after:linearInfo' : 'h-fit'} relative`}>
-                                <p dangerouslySetInnerHTML={{ __html: datas.description }}></p>
-                            </div>
-                            <div className="flex justify-center mt-[20px]">
-                                <button onClick={() => setHiddenInfo(prev => !prev)} className="border-[1px] border-solid border-[#8d8989] outline-none rounded-[2px] cursor-pointer px-[16px] py-[4px]">
-                                    {hiddenInfo ? 'Xem thêm' : 'Ẩn bớt'}
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-            <div className="bg-[#fff] boxShadownHeader mx-[80px] mt-[10px] py-[20px] px-[40px] rounded-[2px]">
+            <div className="bg-[#fff] box-shadow-card-service mx-[20px] mt-[10px] py-[20px] px-[40px] rounded-[2px]">
                 <Comment getData={getData} currentPage={currentPage} id={id} star={star} percentStar={percentStar} />
                 {datas.comment?.length ? (
                     <Pagination
@@ -143,4 +119,4 @@ function ProductDetail() {
     );
 }
 
-export default ProductDetail;
+export default ServiceDetail;

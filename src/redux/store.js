@@ -3,6 +3,7 @@ import modalBookSlice from "./slices/modalBookSlice";
 import noticeAdminSlice from "./slices/noticeAdminSlice";
 import authSlice from "./slices/authSlice";
 import introduceSlice from "./slices/introduceSlice";
+import noteNewCommentAndOrderSlice from "./slices/noteNewCommentAndOrderSlice";
 
 
 import {persistStore, persistReducer} from 'redux-persist';
@@ -22,6 +23,7 @@ const store = configureStore({
         modalBook: modalBookSlice.reducer,
         noticeAdmin: noticeAdminSlice.reducer,
         introduce: introduceSlice.reducer,
+        noteNewCommentAndOrder: noteNewCommentAndOrderSlice.reducer,
     }
 })
 

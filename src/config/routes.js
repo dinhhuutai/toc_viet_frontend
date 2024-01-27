@@ -9,6 +9,7 @@ const routes = {
     train: '/dao-tao',
     contact: '/lien-he',
     cart: '/gio-hang',
+    buyProduct: '/mua-san-pham',
 
     login: '/login',
 
@@ -44,8 +45,15 @@ const routes = {
 
     adminCommentCollection: '/admin/manage/comment/collection',
     adminCommentCollectionDetail: '/admin/manage/comment/collection/detail',
-    adminCommentProduct: '/admin/manage/comment/Product',
-    adminCommentService: '/admin/manage/comment/Service',
+    adminCommentProduct: '/admin/manage/comment/product',
+    adminCommentProductDetail: '/admin/manage/comment/product/detail',
+    adminCommentService: '/admin/manage/comment/service',
+    adminCommentServiceDetail: '/admin/manage/comment/service/detail',
+
+    adminOrderWait: '/admin/manage/order/wait',
+    adminOrderProcessing: '/admin/manage/order/processing',
+    adminOrderSuccessed: '/admin/manage/order/successed',
+    adminOrderCancel: '/admin/manage/order/cancel',
 
 }
 
