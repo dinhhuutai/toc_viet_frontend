@@ -160,34 +160,6 @@ function Table({
                                 </div>
                             </button>
                         </th>
-                        <th>
-                            <button
-                                onClick={() => handleArrange('lastUpdateDate')}
-                                className="w-[180px] shrink-0 cursor-pointer px-[10px] py-[4px] flex items-center justify-between"
-                            >
-                                <span>Last update date</span>
-                                <div className="flex items-center">
-                                    {selectArrange === 'lastUpdateDate' ? (
-                                        arrangeLastUpdateDate ? (
-                                            <>
-                                                <BsCaretUpFill />
-                                                <BsCaretDown />
-                                            </>
-                                        ) : (
-                                            <>
-                                                <BsCaretUp />
-                                                <BsCaretDownFill />
-                                            </>
-                                        )
-                                    ) : (
-                                        <>
-                                            <BsCaretUp />
-                                            <BsCaretDown />
-                                        </>
-                                    )}
-                                </div>
-                            </button>
-                        </th>
                     </tr>
                 </thead>
                 <tbody className="w-full">
@@ -223,11 +195,6 @@ function Table({
                                     service.createDate,
                                 ).getDate()}/${new Date(service.createDate).getMonth() + 1}/${new Date(
                                     service.createDate,
-                                ).getFullYear()}`}</td>
-                                <td className="w-[180px] shrink-0 flex items-center px-[10px] py-[4px]">{`${new Date(
-                                    service.updateDate,
-                                ).getDate()}/${new Date(service.updateDate).getMonth() + 1}/${new Date(
-                                    service.updateDate,
                                 ).getFullYear()}`}</td>
                             </tr>
                         );

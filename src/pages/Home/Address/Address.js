@@ -15,7 +15,7 @@ function Address() {
     const data = useSelector(introduceSelector);
 
     return (
-        <div className="mt-[30px] lg:flex grid grid-cols-2 justify-around items-center">
+        <div className="mt-[30px] lg:flex hidden grid-cols-2 justify-around items-center">
             <Link to={config.routes.contact} className="flex flex-col items-center">
                 <div className="h-[70px] flex items-center">
                     <img className="h-[70px] cursor-pointer" alt="toc_viet" src={logoLocation} />

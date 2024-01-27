@@ -5,29 +5,38 @@ import Appointment from '~/components/Appointment';
 import Address from '../Home/Address';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import Comment from './Comment';
+import Pagination from '~/components/Pagination';
 
 function CollectionDetail() {
     const [datas, setDatas] = useState([]);
     const { id } = useParams();
+    const [currentPage, setCurrentPage] = useState(0);
+    const [star, setStar] = useState(0);
+    const [percentStar, setPercentStar] = useState(0);
 
     useEffect(() => {
         getData();
     }, [id]);
 
-    
     const getData = async () => {
         try {
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/v1/collection/getSingle/${id}`);
 
-            console.log(res.data.collection)
-            if(res.data.success) {
+            if (res.data.success) {
                 setDatas(res.data.collection);
+
+                let starTemp = res.data.collection.comment.reduce((btt, gtht, index) => {
+                    return btt + gtht.star * 1;
+                }, 0);
+
+                starTemp = (starTemp / res.data.collection.comment.length).toFixed(1);
+
+                setStar(starTemp);
+                setPercentStar((starTemp / 5).toFixed(2) * 100);
             }
-        } catch (error) {
-            
-        }
-    }
+        } catch (error) {}
+    };
 
     useEffect(() => {
         window.scrollTo({
@@ -55,6 +64,19 @@ function CollectionDetail() {
                         </div>
                     ))}
                 </div>
+            </div>
+            <div className="bg-[#fff] mx-[80px] mt-[10px] py-[20px] px-[40px] rounded-[2px]">
+                <Comment getData={getData} currentPage={currentPage} id={id} star={star} percentStar={percentStar} />
+                {datas.comment?.length ? (
+                    <Pagination
+                        setCurrentPage={setCurrentPage}
+                        show={10}
+                        currentPage={currentPage}
+                        totalItems={datas.comment?.length}
+                    />
+                ) : (
+                    ''
+                )}
             </div>
             <div className="flex justify-center mt-[100px]">
                 <Appointment />

@@ -3,38 +3,45 @@ import bannerCollection from '~/assets/images/banner_collection.jpg';
 import CartService from '~/components/CartService';
 import Appointment from '~/components/Appointment';
 import Address from '../Home/Address';
+import { BsArrowRepeat } from 'react-icons/bs';
 
 import axios from 'axios';
 
-
-
 function Collection() {
+    const [loadingCreate, setLoadingCreate] = useState(false);
+
     const [datas, setDatas] = useState([]);
+    const [end, setEnd] = useState(30);
+    const [hiddenBtnViewAdd, setHiddenBtnViewAdd] = useState(false);
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [end]);
 
     const getData = async () => {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/v1/collection/getAll`);
+            setLoadingCreate(true);
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/v1/collection/getAll?end=${end}`);
 
-            if(res.data.success) {
+            if (res.data.success) {
                 setDatas(res.data.colections);
+                if(end >= res.data.totalColection){
+                    setHiddenBtnViewAdd(true);
+                }
+
+                setLoadingCreate(false);
             }
         } catch (error) {
-            
+            setLoadingCreate(false);
         }
-    }
-    
-    
+    };
+
     useEffect(() => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
         });
     }, []);
-
 
     return (
         <div className="pb-[50px]">
@@ -55,8 +62,26 @@ function Collection() {
                         </div>
                     ))}
                 </div>
+                {
+                    !hiddenBtnViewAdd &&
+                    <div className="flex justify-center mt-[40px]">
+                        <button
+                            disabled={loadingCreate}
+                            onClick={() => setEnd((prev) => prev + 30)}
+                            className="px-[50px] py-[6px] rounded-[4px] bg-[#6040d6] text-[#fff] cursor-pointer"
+                        >
+                        {loadingCreate ? (
+                            <div className="text-[20px] animate-loading">
+                                <BsArrowRepeat />
+                            </div>
+                        ) : (
+                            'Xem thêm'
+                        )}
+                        </button>
+                    </div>
+                }
             </div>
-            <div className="flex justify-center mt-[100px]">
+            <div className="flex justify-center mt-[60px]">
                 <Appointment />
             </div>
         </div>

@@ -66,6 +66,14 @@ module.exports = {
                     '0%': { width: '70%' },
                     '100%': { width: '0%' },
                 },
+                commentCreateDown: {
+                    '0%': { height: '0px' },
+                    '100%': { height: '210px' },
+                },
+                commentCreateUp: {
+                    '0%': { height: '210px' },
+                    '100%': { height: '0px' },
+                },
             },
             animation: {
                 polish: 'polish 0.8s linear infinite',
@@ -82,6 +90,8 @@ module.exports = {
                 noticeSlideTime: 'noticeSlideTime 10s linear forwards',
                 menuMobiOn: 'menuMobiOn .2s linear forwards',
                 menuMobiOff: 'menuMobiOff .2s linear forwards',
+                commentCreateDown: 'commentCreateDown .2s linear forwards',
+                commentCreateUp: 'commentCreateUp .2s linear forwards',
             },
         },
     },

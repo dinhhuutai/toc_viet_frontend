@@ -15,6 +15,11 @@
 }
 
 @layer components {
+
+    .linearInfo {
+        background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    }
+
     .boxShadownHeader {
         box-shadow: 0px 1px 10px #6cf0f4;
     }

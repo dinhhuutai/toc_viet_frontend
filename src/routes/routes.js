@@ -2,7 +2,9 @@ import config from "~/config";
 
 import Home from '~/pages/Home';
 import Service from '~/pages/Service';
+import ServiceDetail from "~/pages/ServiceDetail";
 import Product from '~/pages/Product';
+import ProductDetail from '~/pages/ProductDetail';
 import Collection from '~/pages/Collection';
 import CollectionDetail from "~/pages/CollectionDetail";
 import Train from '~/pages/Train';
@@ -33,6 +35,15 @@ import AdminPriceTable from "~/pagesAdmin/Manage/PriceTable";
 import AdminTrain from "~/pagesAdmin/Manage/Train";
 import Login from "~/pagesAdmin/Login";
 
+import AdminProduct from '~/pagesAdmin/Manage/Product/List';
+import AdminProductCreate from '~/pagesAdmin/Manage/Product/Create';
+import AdminProductUpdate from '~/pagesAdmin/Manage/Product/Update';
+
+import AdminCommentCollection from '~/pagesAdmin/Manage/Comment/Collection';
+import AdminCommentCollectionDetail from '~/pagesAdmin/Manage/Comment/Collection/CollectionDetail';
+import AdminCommentProduct from '~/pagesAdmin/Manage/Comment/Product';
+import AdminCommentService from '~/pagesAdmin/Manage/Comment/Service';
+
 
 export const routes = [
     {
@@ -44,8 +55,18 @@ export const routes = [
         component: Service,
     },
     {
+        path: config.routes.serviceDetail,
+        component: ServiceDetail,
+        isParams: true,
+    },
+    {
         path: config.routes.product,
         component: Product,
+    },
+    {
+        path: config.routes.productDetail,
+        component: ProductDetail,
+        isParams: true,
     },
     {
         path: config.routes.collection,
@@ -158,6 +179,43 @@ export const routesAdmin = [
     {
         path: config.routes.adminTrain,
         component: AdminTrain,
+        login: true,
+    },
+    {
+        path: config.routes.adminProduct,
+        component: AdminProduct,
+        login: true,
+    },
+    {
+        path: config.routes.adminProductCreate,
+        component: AdminProductCreate,
+        login: true,
+    },
+    {
+        path: config.routes.adminProductUpdate,
+        component: AdminProductUpdate,
+        login: true,
+        addId: true,
+    },
+    {
+        path: config.routes.adminCommentCollection,
+        component: AdminCommentCollection,
+        login: true,
+    },
+    {
+        path: config.routes.adminCommentCollectionDetail,
+        component: AdminCommentCollectionDetail,
+        login: true,
+        addId: true,
+    },
+    {
+        path: config.routes.adminCommentProduct,
+        component: AdminCommentProduct,
+        login: true,
+    },
+    {
+        path: config.routes.adminCommentService,
+        component: AdminCommentService,
         login: true,
     },
 ];

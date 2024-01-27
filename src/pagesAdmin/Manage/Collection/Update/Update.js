@@ -11,6 +11,7 @@ import Alert from '~/components/Alert';
 let setTimeoutTmp;
 
 function UpdateCollection() {
+    const [notChangeImg, setNoChangeImg] = useState(true);
     const tmp = useSelector(userSelector);
     const [user, setUser] = useState(tmp);
 
@@ -40,6 +41,7 @@ function UpdateCollection() {
 
     function handleImage(e) {
         try {
+            setNoChangeImg(false);
             setFiles(e.target.files);
         } catch (error) {}
     }
@@ -65,7 +67,11 @@ function UpdateCollection() {
             dispatch(noticeAdminSlice.actions.processingNotice('Đang cập nhật lại colection'));
             setLoadingCreate(true);
 
-            const resImage = await uploadFiles(files, user.login.accessToken);
+            let resImage;
+            if(!notChangeImg) {
+                resImage = await uploadFiles(files, user.login.accessToken);
+            }
+
 
             const formData = {
                 name: title,

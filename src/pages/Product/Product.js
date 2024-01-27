@@ -3,6 +3,8 @@ import bgProduct from '~/assets/images/banner_product.jpg';
 import imgSP from '~/assets/images/sp.jpg';
 import CartService from '~/components/CartService';
 import Appointment from '~/components/Appointment';
+import axios from 'axios';
+import BottomTableAdmin from '~/components/BottomTableAdmin';
 
 const data = [
     {
@@ -182,9 +184,32 @@ function Product() {
     const [datas, setDatas] = useState([]);
 
     useEffect(() => {
-        setDatas(data);
+        getData();
     }, []);
 
+    const [show, setShow] = useState(5);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [totalProduct, setTotalProduct] = useState(0);
+
+    const getData = async () => {
+        try {
+            
+            const res = await axios.get(
+                `${process.env.REACT_APP_API_URL}/v1/product/getAll?limit=${show}&skip=${
+                    show * currentPage
+                }`,
+            );
+
+            console.log(res.data)
+
+            if(res.data.success) {
+                setDatas(res.data.products);
+                setTotalProduct(res.data.totalProduct);
+            }
+        } catch (error) {
+            
+        }
+    }
     
     
     useEffect(() => {
@@ -210,6 +235,12 @@ function Product() {
                         </div>
                     ))}
                 </div>
+                <BottomTableAdmin
+                    setCurrentPage={setCurrentPage}
+                    show={show}
+                    currentPage={currentPage}
+                    totalItems={totalProduct}
+                />
             </div>
             <div className="flex justify-center mt-[100px]">
                 <Appointment />

@@ -1,7 +1,9 @@
 const routes = {
     home: "/",
     service: '/dich-vu',
+    serviceDetail: '/dich-vu',
     product: '/san-pham',
+    productDetail: '/san-pham',
     collection: '/bo-suu-tap',
     collectionDetail: '/bo-suu-tap',
     train: '/dao-tao',
@@ -34,6 +36,16 @@ const routes = {
     adminIntroduce: '/admin/manage/introduce',
     adminPriceTable: '/admin/manage/price-table',
     adminTrain: '/admin/manage/train',
+
+    
+    adminProduct: '/admin/manage/product/list',
+    adminProductCreate: '/admin/manage/product/create',
+    adminProductUpdate: '/admin/manage/product/update',
+
+    adminCommentCollection: '/admin/manage/comment/collection',
+    adminCommentCollectionDetail: '/admin/manage/comment/collection/detail',
+    adminCommentProduct: '/admin/manage/comment/Product',
+    adminCommentService: '/admin/manage/comment/Service',
 
 }
 

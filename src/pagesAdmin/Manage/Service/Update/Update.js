@@ -146,6 +146,11 @@ function UpdateService() {
             setTimeout(() => {
                 setLoadingCreate(false);
             }, 1000);
+            dispatch(noticeAdminSlice.actions.errorNotice('Lỗi hệ thống! Vui lòng thêm lại.'));
+
+            setTimeoutTmp = setTimeout(() => {
+                dispatch(noticeAdminSlice.actions.hiddenNotice());
+            }, [10000]);
         }
     };
 

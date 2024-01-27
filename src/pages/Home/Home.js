@@ -20,7 +20,7 @@ function Home() {
         <div className="pb-[80px]">
             <Banner />
             <div className="lg:px-[80px] px-[10px] pb-[50px]">
-                <div className="flex justify-center mt-[26px]">
+                <div className="justify-center mt-[26px] flex">
                     <Appointment />
                 </div>
                 <Address />

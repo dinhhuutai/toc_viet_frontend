@@ -9,17 +9,21 @@ import {
     BsCrosshair,
     BsTablet,
     BsBox,
+    BsArchive,
+    BsChatText,
 } from 'react-icons/bs';
 import { useState } from 'react';
 import config from '~/config';
 
-function Sidebar({setOpenMenuMobi}) {
+function Sidebar({ setOpenMenuMobi }) {
     const [downDashboard, setDownDashboard] = useState(false);
     const [downPage, setDownPage] = useState(false);
     const [downApplication, setDownApplication] = useState(false);
 
     const [downCollection, setDownCollection] = useState(true);
     const [downService, setDownService] = useState(false);
+    const [downProduct, setDownProduct] = useState(false);
+    const [downComment, setDownComment] = useState(false);
 
     const hiddenItem = (key) => {
         key !== 'dashboard' && setDownDashboard(false);
@@ -27,6 +31,8 @@ function Sidebar({setOpenMenuMobi}) {
         key !== 'application' && setDownApplication(false);
         key !== 'collection' && setDownCollection(false);
         key !== 'service' && setDownService(false);
+        key !== 'product' && setDownProduct(false);
+        key !== 'comment' && setDownComment(false);
     };
 
     return (
@@ -68,7 +74,10 @@ function Sidebar({setOpenMenuMobi}) {
                                     downDashboard ? 'animate-downSlide' : 'animate-upSlide'
                                 } overflow-hidden pl-[28px] pt-[4px] relative before:content-[""] before:left-[16px] before:absolute before:w-[2px] before:h-full before:bg-[#c0cfd8]`}
                             >
-                                <li onClick={() => setOpenMenuMobi(false)} className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer">
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
                                     <NavLink
                                         to={config.routes.adminAnalytics}
                                         className={(nav) =>
@@ -80,7 +89,10 @@ function Sidebar({setOpenMenuMobi}) {
                                         Analytics
                                     </NavLink>
                                 </li>
-                                <li onClick={() => setOpenMenuMobi(false)} className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer">
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
                                     <NavLink
                                         to={config.routes.adminChartArea}
                                         className={(nav) =>
@@ -127,7 +139,10 @@ function Sidebar({setOpenMenuMobi}) {
                                     downPage ? 'animate-downSlide' : 'animate-upSlide'
                                 } overflow-hidden pl-[28px] pt-[4px] relative before:content-[""] before:left-[16px] before:absolute before:w-[2px] before:h-full before:bg-[#c0cfd8]`}
                             >
-                                <li onClick={() => setOpenMenuMobi(false)} className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer">
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
                                     <NavLink
                                         to={config.routes.adminExplore}
                                         className={(nav) =>
@@ -139,7 +154,10 @@ function Sidebar({setOpenMenuMobi}) {
                                         Explore
                                     </NavLink>
                                 </li>
-                                <li onClick={() => setOpenMenuMobi(false)} className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer">
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
                                     <NavLink
                                         to={config.routes.adminHub}
                                         className={(nav) =>
@@ -186,7 +204,10 @@ function Sidebar({setOpenMenuMobi}) {
                                     downApplication ? 'animate-downSlide1' : 'animate-upSlide1'
                                 } overflow-hidden pl-[28px] pt-[4px] relative before:content-[""] before:left-[16px] before:absolute before:w-[2px] before:h-full before:bg-[#c0cfd8]`}
                             >
-                                <li onClick={() => setOpenMenuMobi(false)} className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer">
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
                                     <NavLink
                                         to={config.routes.adminMailBox}
                                         className={(nav) =>
@@ -198,7 +219,10 @@ function Sidebar({setOpenMenuMobi}) {
                                         Mailbox
                                     </NavLink>
                                 </li>
-                                <li onClick={() => setOpenMenuMobi(false)} className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer">
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
                                     <NavLink
                                         to={config.routes.adminChat}
                                         className={(nav) =>
@@ -210,7 +234,10 @@ function Sidebar({setOpenMenuMobi}) {
                                         Chat
                                     </NavLink>
                                 </li>
-                                <li onClick={() => setOpenMenuMobi(false)} className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer">
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
                                     <NavLink
                                         to={config.routes.adminSection}
                                         className={(nav) =>
@@ -263,7 +290,10 @@ function Sidebar({setOpenMenuMobi}) {
                                     downCollection ? 'animate-downSlide' : 'animate-upSlide'
                                 } overflow-hidden pl-[28px] pt-[4px] relative before:content-[""] before:left-[16px] before:absolute before:w-[2px] before:h-full before:bg-[#c0cfd8]`}
                             >
-                                <li onClick={() => setOpenMenuMobi(false)} className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer">
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
                                     <NavLink
                                         to={config.routes.adminCollection}
                                         className={(nav) =>
@@ -275,7 +305,10 @@ function Sidebar({setOpenMenuMobi}) {
                                         Danh sách
                                     </NavLink>
                                 </li>
-                                <li onClick={() => setOpenMenuMobi(false)} className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer">
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
                                     <NavLink
                                         to={config.routes.adminCollectionCreate}
                                         className={(nav) =>
@@ -322,7 +355,10 @@ function Sidebar({setOpenMenuMobi}) {
                                     downService ? 'animate-downSlide' : 'animate-upSlide'
                                 } overflow-hidden pl-[28px] pt-[4px] relative before:content-[""] before:left-[16px] before:absolute before:w-[2px] before:h-full before:bg-[#c0cfd8]`}
                             >
-                                <li onClick={() => setOpenMenuMobi(false)} className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer">
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
                                     <NavLink
                                         to={config.routes.adminService}
                                         className={(nav) =>
@@ -334,7 +370,10 @@ function Sidebar({setOpenMenuMobi}) {
                                         Danh sách
                                     </NavLink>
                                 </li>
-                                <li onClick={() => setOpenMenuMobi(false)} className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer">
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
                                     <NavLink
                                         to={config.routes.adminServiceCreate}
                                         className={(nav) =>
@@ -348,21 +387,202 @@ function Sidebar({setOpenMenuMobi}) {
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <li
+                                onClick={() => {
+                                    hiddenItem('product');
+                                    setDownProduct((prev) => !prev);
+                                }}
+                                className="flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group"
+                            >
+                                <div className="text-[#999797] group-hover:text-[#333] text-[20px] w-[34px] flex justify-center">
+                                    <BsArchive />
+                                </div>
+                                <span
+                                    className={`${
+                                        downProduct
+                                            ? 'text-[13px] flex-1 ml-[6px] font-[600]'
+                                            : 'text-[13px] flex-1 ml-[6px]'
+                                    } capitalize`}
+                                >
+                                    Sản phẩm
+                                </span>
+                                <div
+                                    className={`${
+                                        downProduct ? 'rotate-[180deg]' : 'rotate-[0deg]'
+                                    } ease-linear duration-[.2s] text-[#999797] group-hover:text-[#333] text-[12px] mr-[10px]`}
+                                >
+                                    <BsChevronDown />
+                                </div>
+                            </li>
+                            <ul
+                                className={`${
+                                    downProduct ? 'animate-downSlide' : 'animate-upSlide'
+                                } overflow-hidden pl-[28px] pt-[4px] relative before:content-[""] before:left-[16px] before:absolute before:w-[2px] before:h-full before:bg-[#c0cfd8]`}
+                            >
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
+                                    <NavLink
+                                        to={config.routes.adminProduct}
+                                        className={(nav) =>
+                                            nav.isActive
+                                                ? 'font-[600] text-[#3F6AD8] py-[6px] px-[22px] block w-full'
+                                                : 'font-[400] py-[6px] px-[22px] block w-full'
+                                        }
+                                    >
+                                        Danh sách
+                                    </NavLink>
+                                </li>
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
+                                    <NavLink
+                                        to={config.routes.adminProductCreate}
+                                        className={(nav) =>
+                                            nav.isActive
+                                                ? 'font-[600] text-[#3F6AD8] py-[6px] px-[22px] block w-full'
+                                                : 'font-[400] py-[6px] px-[22px] block w-full'
+                                        }
+                                    >
+                                        Thêm
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <li
+                                onClick={() => {
+                                    hiddenItem('comment');
+                                    setDownComment((prev) => !prev);
+                                }}
+                                className="flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group"
+                            >
+                                <div className="text-[#999797] group-hover:text-[#333] text-[20px] w-[34px] flex justify-center">
+                                    <BsChatText />
+                                </div>
+                                <span
+                                    className={`${
+                                        downComment
+                                            ? 'text-[13px] flex-1 ml-[6px] font-[600]'
+                                            : 'text-[13px] flex-1 ml-[6px]'
+                                    } capitalize`}
+                                >
+                                    Bình luận
+                                </span>
+                                <div
+                                    className={`${
+                                        downComment ? 'rotate-[180deg]' : 'rotate-[0deg]'
+                                    } ease-linear duration-[.2s] text-[#999797] group-hover:text-[#333] text-[12px] mr-[10px]`}
+                                >
+                                    <BsChevronDown />
+                                </div>
+                            </li>
+                            <ul
+                                className={`${
+                                    downComment ? 'animate-downSlide1' : 'animate-upSlide1'
+                                } overflow-hidden pl-[28px] pt-[4px] relative before:content-[""] before:left-[16px] before:absolute before:w-[2px] before:h-full before:bg-[#c0cfd8]`}
+                            >
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
+                                    <NavLink
+                                        to={config.routes.adminCommentCollection}
+                                        className={(nav) =>
+                                            nav.isActive
+                                                ? 'font-[600] text-[#3F6AD8] py-[6px] px-[22px] block w-full'
+                                                : 'font-[400] py-[6px] px-[22px] block w-full'
+                                        }
+                                    >
+                                        Bộ sưu tập
+                                    </NavLink>
+                                </li>
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
+                                    <NavLink
+                                        to={config.routes.adminCommentProduct}
+                                        className={(nav) =>
+                                            nav.isActive
+                                                ? 'font-[600] text-[#3F6AD8] py-[6px] px-[22px] block w-full'
+                                                : 'font-[400] py-[6px] px-[22px] block w-full'
+                                        }
+                                    >
+                                        Sản phẩm
+                                    </NavLink>
+                                </li>
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
+                                    <NavLink
+                                        to={config.routes.adminCommentService}
+                                        className={(nav) =>
+                                            nav.isActive
+                                                ? 'font-[600] text-[#3F6AD8] py-[6px] px-[22px] block w-full'
+                                                : 'font-[400] py-[6px] px-[22px] block w-full'
+                                        }
+                                    >
+                                        Dịch vụ
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        </li>
                         <li onClick={() => setOpenMenuMobi(false)} className="mt-[6px]">
-                            <NavLink onClick={() => {hiddenItem('introduce')}} to={config.routes.adminIntroduce} className={(nav) => nav.isActive ? 'font-[600] flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group ' : `flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group`}>
-                                <div className="text-[#999797] group-hover:text-[#333] text-[20px] w-[34px] flex justify-center"><BsCrosshair /></div>
+                            <NavLink
+                                onClick={() => {
+                                    hiddenItem('introduce');
+                                }}
+                                to={config.routes.adminIntroduce}
+                                className={(nav) =>
+                                    nav.isActive
+                                        ? 'font-[600] flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group '
+                                        : `flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group`
+                                }
+                            >
+                                <div className="text-[#999797] group-hover:text-[#333] text-[20px] w-[34px] flex justify-center">
+                                    <BsCrosshair />
+                                </div>
                                 <span className={`text-[13px] flex-1 ml-[6px] capitalize`}>Giới thiệu</span>
                             </NavLink>
                         </li>
                         <li onClick={() => setOpenMenuMobi(false)} className="mt-[6px]">
-                            <NavLink onClick={() => {hiddenItem('priceTable')}} to={config.routes.adminPriceTable} className={(nav) => nav.isActive ? 'font-[600] flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group ' : `flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group`}>
-                                <div className="text-[#999797] group-hover:text-[#333] text-[20px] w-[34px] flex justify-center"><BsTablet /></div>
+                            <NavLink
+                                onClick={() => {
+                                    hiddenItem('priceTable');
+                                }}
+                                to={config.routes.adminPriceTable}
+                                className={(nav) =>
+                                    nav.isActive
+                                        ? 'font-[600] flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group '
+                                        : `flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group`
+                                }
+                            >
+                                <div className="text-[#999797] group-hover:text-[#333] text-[20px] w-[34px] flex justify-center">
+                                    <BsTablet />
+                                </div>
                                 <span className={`text-[13px] flex-1 ml-[6px] capitalize`}>Bảng giá</span>
                             </NavLink>
                         </li>
                         <li onClick={() => setOpenMenuMobi(false)} className="mt-[6px]">
-                            <NavLink onClick={() => {hiddenItem('train')}} to={config.routes.adminTrain} className={(nav) => nav.isActive ? 'font-[600] flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group ' : `flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group`}>
-                                <div className="text-[#999797] group-hover:text-[#333] text-[20px] w-[34px] flex justify-center"><BsBox /></div>
+                            <NavLink
+                                onClick={() => {
+                                    hiddenItem('train');
+                                }}
+                                to={config.routes.adminTrain}
+                                className={(nav) =>
+                                    nav.isActive
+                                        ? 'font-[600] flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group '
+                                        : `flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group`
+                                }
+                            >
+                                <div className="text-[#999797] group-hover:text-[#333] text-[20px] w-[34px] flex justify-center">
+                                    <BsBox />
+                                </div>
                                 <span className={`text-[13px] flex-1 ml-[6px] capitalize`}>Đào tạo</span>
                             </NavLink>
                         </li>
