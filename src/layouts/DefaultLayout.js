@@ -23,7 +23,7 @@ function DefaultLayout({ children }) {
             <div className="h-[var(--height-header)] bg-[#fff] fixed z-[999] top-[0px] left-[0px] right-[0px] boxShadownHeader">
                 <Header />
             </div>
-            <div className="mt-[var(--height-header)] min-h-screen">{children}</div>
+            <div className="mt-[var(--height-header)] lg:min-h-screen">{children}</div>
             <div className="">
                 <Footer />
             </div>

@@ -52,6 +52,10 @@ import AdminOrderProcessing from '~/pagesAdmin/Manage/Order/Processing';
 import AdminOrderSuccesse from '~/pagesAdmin/Manage/Order/Successed';
 import AdminOrderCancel from '~/pagesAdmin/Manage/Order/Cancel';
 
+import AdminBannerTocviet from '~/pagesAdmin/Manage/Banner/TocViet';
+import AdminBannerOther from '~/pagesAdmin/Manage/Banner/Other';
+
+import AdminOpinionCustomer from '~/pagesAdmin/Manage/OpinionCustomer';
 
 
 export const routes = [
@@ -262,6 +266,21 @@ export const routesAdmin = [
     {
         path: config.routes.adminOrderCancel,
         component: AdminOrderCancel,
+        login: true,
+    },
+    {
+        path: config.routes.adminBannerTocViet,
+        component: AdminBannerTocviet,
+        login: true,
+    },
+    {
+        path: config.routes.adminBannerOther,
+        component: AdminBannerOther,
+        login: true,
+    },
+    {
+        path: config.routes.adminOpinionCustomer,
+        component: AdminOpinionCustomer,
         login: true,
     },
 ];

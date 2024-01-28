@@ -1,11 +1,10 @@
-import { BsPersonFill, BsFillStarFill } from 'react-icons/bs';
+
 import Child from './Child';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Comment({ getData, currentPage, id, star, percentStar }) {
+function Comment({ totalComment, setTotalCommentBy, currentPage, id }) {
     const [comments, setComments] = useState([]);
-    const [commentsLength, setCommentsLength] = useState([]);
 
     const [valueRadio, setValueRadio] = useState(true);
 
@@ -22,16 +21,16 @@ function Comment({ getData, currentPage, id, star, percentStar }) {
 
         if (res.data.success) {
             setComments(res.data.comment);
-            setCommentsLength(res.data.commentLength);
+            setTotalCommentBy(res.data.commentLength);
         }
     };
 
     return (
         <div className="">
-            <div className="flex items-center justify-between border-b-[1px] border-solid border-[#b5aeae] pb-[10px]">
-                <span className="text-[16px] font-[500]"> {commentsLength === 0 ? "Chưa có đánh giá" : "Đánh giá của khách hàng"}</span>
+            <div className="flex flex-col lg:flex-row lg:items-center gap-[6px] lg:gap-[0px] justify-between border-b-[1px] border-solid border-[#b5aeae] pb-[10px]">
+                <span className="text-[16px] font-[500]"> {totalComment === 0 ? "Chưa có đánh giá" : "Đánh giá của khách hàng"}</span>
                 {
-                    commentsLength !== 0 &&
+                    totalComment !== 0 &&
                     <div className='flex gap-[20px] items-center'>
                         <div className='flex gap-[4px] items-center'>
                             <input onClick={() => setValueRadio(prev => !prev)} id='inputAll' name='inputRadio' type='radio' checked={valueRadio} />
@@ -47,7 +46,7 @@ function Comment({ getData, currentPage, id, star, percentStar }) {
             <div>
                 {comments?.map((data) => (
                     <div
-                        className="px-[18px] border-t-[1px] border-solid border-[#b5aeae] pt-[16px] pb-[16px]"
+                        className="lg:px-[18px] px-[10px] border-t-[1px] border-solid border-[#b5aeae] pt-[16px] pb-[16px]"
                         key={data._id}
                     >
                         <Child getDataComment={getDataComment} id={id} data={data} />

@@ -45,7 +45,7 @@ function Product() {
                 Bình luận sản phẩm
             </div>
             <div className="min-h-screen bg-[#fff] rounded-[4px] box-shadow-card-service mt-[10px] px-[20px] pt-[20px] pb-[60px]">
-                <div className='grid grid-cols-2 gap-[12px]'>
+                <div className='grid grid-cols-1 lg:grid-cols-2 gap-[12px]'>
                     {
                         datas.map((data, index) => 
                             <Link to={`${config.routes.adminCommentProductDetail}/${data._id}`} className='mt-[4px]' key={index}>

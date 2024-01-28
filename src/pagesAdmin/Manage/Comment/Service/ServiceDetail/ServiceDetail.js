@@ -11,6 +11,7 @@ function ServiceDetail() {
     const [currentPage, setCurrentPage] = useState(0);
     const [star, setStar] = useState(0);
     const [percentStar, setPercentStar] = useState(0);
+    const [totalCommentBy, setTotalCommentBy] = useState(0);
 
     useEffect(() => {
         getData();
@@ -46,14 +47,14 @@ function ServiceDetail() {
 
     return (
         <div className="bg-[#f5f5f5] w-full min-h-screen py-[20px]">
-            <div className="bg-[#fff] mx-[20px] box-shadow-card-service py-[30px] px-[40px] rounded-[2px] grid grid-cols-3">
+            <div className="bg-[#fff] mx-[20px] box-shadow-card-service py-[30px] px-[40px] rounded-[2px] grid grid-cols-1 lg:grid-cols-3">
                 <div className="flex justify-center">
                     <div className="w-[300px] h-[300px] border-[1px] border-solid border-[#bab5b5] overflow-hidden rounded-[2px]">
                         <img className="w-full h-full object-cover" alt={`toc_viet_${datas.name}`} src={datas?.image} />
                     </div>
                 </div>
-                <div className="col-span-2">
-                    <div className="ml-[20px]">
+                <div className="col-span-2 lg:mt-[0px] mt-[10px]">
+                    <div className="lg:ml-[20px]">
                         <div>
                             <span className="text-[20px] font-[600] uppercase">{datas.name}</span>
                         </div>
@@ -102,14 +103,14 @@ function ServiceDetail() {
                     </div>
                 </div>
             </div>
-            <div className="bg-[#fff] box-shadow-card-service mx-[20px] mt-[10px] py-[20px] px-[40px] rounded-[2px]">
-                <Comment getData={getData} currentPage={currentPage} id={id} star={star} percentStar={percentStar} />
-                {datas.comment?.length ? (
+            <div className="bg-[#fff] box-shadow-card-service mx-[20px] mt-[10px] py-[20px] px-[10px] lg:px-[40px] rounded-[2px]">
+                <Comment getData={getData} totalComment={datas.comment?.length} setTotalCommentBy={setTotalCommentBy} currentPage={currentPage} id={id} star={star} percentStar={percentStar} />
+                {totalCommentBy ? (
                     <Pagination
                         setCurrentPage={setCurrentPage}
                         show={10}
                         currentPage={currentPage}
-                        totalItems={datas.comment?.length}
+                        totalItems={totalCommentBy}
                     />
                 ) : (
                     ''

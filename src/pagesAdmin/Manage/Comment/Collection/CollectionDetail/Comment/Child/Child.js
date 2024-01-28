@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { noticeAdminSelector } from '~/redux/selectors';
 import noticeAdminSlice from '~/redux/slices/noticeAdminSlice';
+import noteNewCommentAndOrderSlice from '~/redux/slices/noteNewCommentAndOrderSlice';
 
 let setTimeoutTmp;
 
@@ -53,6 +54,7 @@ function Child({ id, data, getDataComment }) {
                 getDataComment();
                 setValueFeedback(res.data.feedback);
                 setLoadingCreate(false);
+                getNoteNew();
             }
         } catch (error) {
             setLoadingCreate(false);
@@ -72,9 +74,29 @@ function Child({ id, data, getDataComment }) {
 
             if (res.data.success) {
                 getDataComment();
+                getNoteNew();
             }
         } catch (error) {}
     };
+
+    
+    const getNoteNew = async () => {
+        try {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/v1/notice/getNotice`);
+
+            if(res.data.success){
+                dispatch(noteNewCommentAndOrderSlice.actions.setValue({
+                    commentCollectionLength: res.data.commentCollectionLength,
+                    commentProductLength: res.data.commentProductLength,
+                    commentServiceLength: res.data.commentServiceLength,
+                    orderNewLength: res.data.orderNewLength,
+                }))
+            }
+
+        } catch (error) {
+            
+        }
+    }
 
     return (
         <div>

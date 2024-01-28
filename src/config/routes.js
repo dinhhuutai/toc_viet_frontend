@@ -54,6 +54,11 @@ const routes = {
     adminOrderProcessing: '/admin/manage/order/processing',
     adminOrderSuccessed: '/admin/manage/order/successed',
     adminOrderCancel: '/admin/manage/order/cancel',
+    
+    adminBannerTocViet: '/admin/manage/banner/tocviet',
+    adminBannerOther: '/admin/manage/banner/other',
+
+    adminOpinionCustomer: '/admin/manage/opinionCustomer',
 
 }
 

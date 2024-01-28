@@ -7,7 +7,6 @@ function CardNoticeComment({ data }) {
     const [percentStar, setPercentStar] = useState(0);
     const [quantityCommentNoFeedback, setQuantityCommentNoFeedback] = useState(0);
 
-
     useEffect(() => {
         getData();
     }, [data]);
@@ -36,7 +35,11 @@ function CardNoticeComment({ data }) {
     return (
         <div className="flex items-center border-[1px] border-solid border-[#999595] rounded-[4px] px-[6px] py-[4px]">
             <div className="h-[80px] w-[80px] overflow-hidden rounded-[2px] ">
-                <img className="w-full h-full object-cover" alt="toc_viet" src={data.images ? data.images[0] : data.image} />
+                <img
+                    className="w-full h-full object-cover"
+                    alt="toc_viet"
+                    src={data.images ? data.images[0] : data.image}
+                />
             </div>
             <div className="flex-1 ml-[12px]">
                 <div>
@@ -78,7 +81,7 @@ function CardNoticeComment({ data }) {
                             </div>
                         </div>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex lg:items-center items-end">
                         <span className="text-[16px] font-[450]">{data.comment?.length}</span>
                         <p className="ml-[6px]">Đánh Giá</p>
                     </div>
@@ -87,8 +90,8 @@ function CardNoticeComment({ data }) {
             <div className="flex flex-col items-end justify-between ml-[10px] h-[80px]">
                 <div>
                     {quantityCommentNoFeedback !== 0 && (
-                        <p className="flex text-[12px] items-end bg-[#e93c3c] rounded-[10px] px-[6px] py-[2px] text-[#fff]">
-                            <span className="block mr-[4px] text-[14px]">{quantityCommentNoFeedback}</span> bình luận
+                        <p className="flex text-[12px] items-center lg:items-end bg-[#e93c3c] rounded-[10px] px-[6px] py-[2px] text-[#fff]">
+                            <span className="block mr-[4px] text-[14px]">{quantityCommentNoFeedback}</span>
                             chưa phản hồi
                         </p>
                     )}

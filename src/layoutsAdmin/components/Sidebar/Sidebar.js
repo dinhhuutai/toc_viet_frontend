@@ -12,6 +12,8 @@ import {
     BsArchive,
     BsChatText,
     BsClipboardMinus,
+    BsViewList,
+    BsPersonVcard,
 } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
 import config from '~/config';
@@ -29,6 +31,7 @@ function Sidebar({ setOpenMenuMobi }) {
     const [downProduct, setDownProduct] = useState(false);
     const [downComment, setDownComment] = useState(false);
     const [downOrder, setDownOrder] = useState(false);
+    const [downBanner, setDownBanner] = useState(false);
 
     const hiddenItem = (key) => {
         key !== 'dashboard' && setDownDashboard(false);
@@ -39,6 +42,7 @@ function Sidebar({ setOpenMenuMobi }) {
         key !== 'product' && setDownProduct(false);
         key !== 'comment' && setDownComment(false);
         key !== 'order' && setDownOrder(false);
+        key !== 'banner' && setDownBanner(false);
     };
 
     const tmp = useSelector(noteNewCommentAndOrderSelector);
@@ -47,8 +51,6 @@ function Sidebar({ setOpenMenuMobi }) {
     useEffect(() => {
         setNoteNewCommentAndOrder(tmp);
     }, [tmp]);
-
-    console.log(noteNewCommentAndOrder);
 
     return (
         <div className="hover:scrollbar-admin-sidebar w-full h-full shadow-lg shadow-indigo-500/50 overflow-y-auto scrollbar-admin-sidebar-none group/parent">
@@ -715,6 +717,71 @@ function Sidebar({ setOpenMenuMobi }) {
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <li
+                                onClick={() => {
+                                    hiddenItem('banner');
+                                    setDownBanner((prev) => !prev);
+                                }}
+                                className="flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group"
+                            >
+                                <div className="text-[#999797] group-hover:text-[#333] text-[20px] w-[34px] flex justify-center">
+                                    <BsViewList />
+                                </div>
+                                <span
+                                    className={`${
+                                        downBanner
+                                            ? 'text-[13px] flex-1 ml-[6px] font-[600]'
+                                            : 'text-[13px] flex-1 ml-[6px]'
+                                    } capitalize`}
+                                >
+                                    Banner
+                                </span>
+                                <div
+                                    className={`${
+                                        downBanner ? 'rotate-[180deg]' : 'rotate-[0deg]'
+                                    } ease-linear duration-[.2s] text-[#999797] group-hover:text-[#333] text-[12px] mr-[10px]`}
+                                >
+                                    <BsChevronDown />
+                                </div>
+                            </li>
+                            <ul
+                                className={`${
+                                    downBanner ? 'animate-downSlide' : 'animate-upSlide'
+                                } overflow-hidden pl-[28px] pt-[4px] relative before:content-[""] before:left-[16px] before:absolute before:w-[2px] before:h-full before:bg-[#c0cfd8]`}
+                            >
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
+                                    <NavLink
+                                        to={config.routes.adminBannerTocViet}
+                                        className={(nav) =>
+                                            nav.isActive
+                                                ? 'font-[600] text-[#3F6AD8] py-[6px] px-[22px] block w-full'
+                                                : 'font-[400] py-[6px] px-[22px] block w-full'
+                                        }
+                                    >
+                                        Trang tóc việt
+                                    </NavLink>
+                                </li>
+                                <li
+                                    onClick={() => setOpenMenuMobi(false)}
+                                    className="hover:text-[#3F6AD8] text-[13px] mt-[4px] capitalize rounded-[4px] hover:bg-[#E0F3FF] cursor-pointer"
+                                >
+                                    <NavLink
+                                        to={config.routes.adminBannerOther}
+                                        className={(nav) =>
+                                            nav.isActive
+                                                ? 'font-[600] text-[#3F6AD8] py-[6px] px-[22px] block w-full'
+                                                : 'font-[400] py-[6px] px-[22px] block w-full'
+                                        }
+                                    >
+                                        Các trang khác
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        </li>
                         <li onClick={() => setOpenMenuMobi(false)} className="mt-[6px]">
                             <NavLink
                                 onClick={() => {
@@ -767,6 +834,24 @@ function Sidebar({ setOpenMenuMobi }) {
                                     <BsBox />
                                 </div>
                                 <span className={`text-[13px] flex-1 ml-[6px] capitalize`}>Đào tạo</span>
+                            </NavLink>
+                        </li>
+                        <li onClick={() => setOpenMenuMobi(false)} className="mt-[6px]">
+                            <NavLink
+                                onClick={() => {
+                                    hiddenItem('opinion');
+                                }}
+                                to={config.routes.adminOpinionCustomer}
+                                className={(nav) =>
+                                    nav.isActive
+                                        ? 'font-[600] flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group '
+                                        : `flex items-center py-[8px] rounded-[4px] cursor-pointer hover:bg-[#E0F3FF] group`
+                                }
+                            >
+                                <div className="text-[#999797] group-hover:text-[#333] text-[20px] w-[34px] flex justify-center">
+                                    <BsPersonVcard />
+                                </div>
+                                <span className={`text-[13px] flex-1 ml-[6px] capitalize`}>Ý kiếm khách hàng</span>
                             </NavLink>
                         </li>
                     </ul>

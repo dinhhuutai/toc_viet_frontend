@@ -115,13 +115,13 @@ function List() {
         <div className="py-[10px] px-[14px]">
             <div className="bg-[#fff] flex justify-between box-shadow-card-service-2 px-[20px] py-[10px] rounded-[4px] text-[15px] uppercase font-[600]">
                 <div className="flex items-center gap-[20px]">
-                    <h1 className="text-[15px] text-[#000000] font-[600] uppercase">Danh sách dịch vụ</h1>
+                    <h1 className="text-[15px] text-[#000000] font-[600] uppercase">Danh sách sản phẩm</h1>
                 </div>
                 <div className="flex gap-[16px]">
                     <button>
                         <Link
                             className="text-[14px] hover:opacity-[0.8] flex items-center font-[600] bg-[#0098EF] text-[#fff] px-[10px] py-[6px] rounded-[4px] cursor-pointer shadow-lg shadow-indigo-500/10"
-                            to={config.routes.adminServiceCreate}
+                            to={config.routes.adminProductCreate}
                         >
                             <BsPlusSquare className="mr-[6px] text-[18px]" />
                             Thêm

@@ -20,6 +20,7 @@ function Introduce() {
     const [linkTiktok, setLinkTiktok] = useState('');
     const [linkYoutube, setLinkYoutube] = useState('');
     const [phone, setPhone] = useState('');
+    const [phone1, setPhone1] = useState('');
     const [email, setEmail] = useState('');
     const [openHour, setOpenHour] = useState('');
     const [introduce, setIntroduce] = useState('');
@@ -27,7 +28,6 @@ function Introduce() {
     const [notChangeImg, setNoChangeImg] = useState(true);
     const [image, setImage] = useState('');
     const [imageLocal, setImageLocal] = useState('');
-
     var imageMain = useRef();
     function handleImage(e) {
         setNoChangeImg(false);
@@ -107,6 +107,7 @@ function Introduce() {
                 linkTiktok,
                 linkYoutube,
                 phone,
+                phone1,
                 email,
                 openHour,
                 introduce,
@@ -132,6 +133,7 @@ function Introduce() {
                 setLinkTiktok(res.data.introduce.linkTiktok);
                 setLinkYoutube(res.data.introduce.linkYoutube);
                 setPhone(res.data.introduce.phone);
+                setPhone1(res.data.introduce.phone1);
                 setEmail(res.data.introduce.email);
                 setOpenHour(res.data.introduce.openHour);
                 setIntroduce(res.data.introduce.introduce);
@@ -171,6 +173,7 @@ function Introduce() {
             setLinkTiktok(res.data.salon.linkTiktok);
             setLinkYoutube(res.data.salon.linkYoutube);
             setPhone(res.data.salon.phone);
+            setPhone1(res.data.salon.phone1);
             setEmail(res.data.salon.email);
             setOpenHour(res.data.salon.openHour);
             setIntroduce(res.data.salon.introduce);
@@ -264,13 +267,23 @@ function Introduce() {
                     </div>
                 </div>
                 <div className="mt-[30px] flex items-end">
-                    <label className="min-w-[100px]">Số điện thoại:</label>
+                    <label className="min-w-[100px]">Số điện thoại 1:</label>
                     <input
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         className="border-[1px] border-solid border-[#a9a5a5] flex-1 ml-[14px] rounded-[2px] outline-none text-[14px] px-[6px] py-[2px]"
                         type="text"
-                        placeholder="Số điện thoại"
+                        placeholder="Số điện thoại 1"
+                    />
+                </div>
+                <div className="mt-[30px] flex items-end">
+                    <label className="min-w-[100px]">Số điện thoại 2:</label>
+                    <input
+                        value={phone1}
+                        onChange={(e) => setPhone1(e.target.value)}
+                        className="border-[1px] border-solid border-[#a9a5a5] flex-1 ml-[14px] rounded-[2px] outline-none text-[14px] px-[6px] py-[2px]"
+                        type="text"
+                        placeholder="Số điện thoại 2"
                     />
                 </div>
                 <div className="mt-[30px] flex items-end">

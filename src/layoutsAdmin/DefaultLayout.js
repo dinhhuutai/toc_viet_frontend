@@ -13,7 +13,7 @@ function DefaultLayout({children}) {
             <div className='h-[var(--admin-height-header)] fixed top-0 left-0 right-0 z-[100] bg-[#fff]'>
                 <Header />
             </div>
-            <div className='mt-[var(--admin-height-header)]'>
+            <div className='mt-[var(--admin-height-header)] relative z-[9]'>
                 <div className='lg:w-[var(--admin-width-sidebar)] w-[0px] fixed top-[var(--admin-height-header)] left-0 bottom-0 bg-[#fff]'>
                     <Sidebar setOpenMenuMobi={setOpenMenuMobi} />
                 </div>

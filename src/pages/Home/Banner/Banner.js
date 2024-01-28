@@ -1,27 +1,5 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
-import banner1 from '~/assets/images/banner_1.jpg';
-import banner2 from '~/assets/images/banner_2.jpg';
-import banner3 from '~/assets/images/banner_3.jpg';
-import banner4 from '~/assets/images/banner_4.jpg';
-import banner5 from '~/assets/images/banner_5.jpg';
-
-const datas = [
-    {
-        img: banner1,
-    },
-    {
-        img: banner2,
-    },
-    {
-        img: banner3,
-    },
-    {
-        img: banner4,
-    },
-    {
-        img: banner5,
-    },
-];
 
 function Banner() {
     const [data, setData] = useState([]);
@@ -30,9 +8,19 @@ function Banner() {
     const [pos, setPos] = useState(0);
 
     useEffect(() => {
-        setData(datas);
-        setLengthImg(datas.length);
+        getData();
     }, []);
+
+    const getData = async () => {
+        try {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/v1/bannerTocViet/getAll`);
+
+            if (res.data.success) {
+                setData(res.data.images);
+                setLengthImg(res.data.images.length);
+            }
+        } catch (error) {}
+    };
 
     useEffect(() => {
         const slide = setTimeout(() => {
@@ -59,7 +47,7 @@ function Banner() {
 
     return (
         <div className="overflow-hidden w-[100%] flex justify-center">
-            <div className="relative w-[100%] lg:h-[300px] h-[200px]">
+            <div className="relative w-[100%] lg:h-[300px] h-[250px]">
                 {data.map((e, i) => (
                     <div
                         key={i}
@@ -67,7 +55,7 @@ function Banner() {
                             index === i ? 'opacity-100' : 'opacity-0'
                         }`}
                     >
-                        <img className="w-[100%] lg:h-[300px] h-[200px] object-fill" alt="toc_viet" src={e.img} />
+                        <img className="w-[100%] lg:h-[300px] h-[250px] object-fill" alt="toc_viet" src={e.image} />
                     </div>
                 ))}
                 <div className="absolute z-[10] flex bottom-[20px] gap-[20px] left-[50%] translate-x-[-50%]">

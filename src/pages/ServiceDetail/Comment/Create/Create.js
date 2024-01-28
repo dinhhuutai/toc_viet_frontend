@@ -97,7 +97,7 @@ function Create({ getDataComment, getData, setComments, id, setClosedCreate }) {
                         </div>
                     </div>
                 </div>
-                <div className="ml-[50px] w-full">
+                <div className="lg:ml-[50px] ml-[20px] w-full">
                     <div className="flex gap-[10px]">
                         <div onClick={() => setStar(1)} className="text-[20px] text-[#c9e056] cursor-pointer">
                             {star < 1 ? <BsStar /> : <BsStarFill className="" />}

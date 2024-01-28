@@ -212,8 +212,8 @@ function Train() {
             </div>
             <div className="min-h-screen bg-[#fff] rounded-[4px] box-shadow-card-service mt-[10px] px-[20px] pt-[20px] pb-[60px]">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-[10px]">
-                    <div className="flex flex-col items-end lg:items-start">
-                        <label>Image 1:</label>
+                    <div className="flex flex-col items-center lg:items-start">
+                        <label className='lg:block hidden'>Image 1:</label>
                         <div className="mt-[6px] flex justify-center">
                             <div className="relative w-[210px] h-[210px] border-[2px] border-dashed border-[#989494] cursor-pointer bg-[#fff]">
                                 <input
@@ -235,8 +235,8 @@ function Train() {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col items-end lg:items-start">
-                        <label>Image 2:</label>
+                    <div className="flex flex-col items-center lg:items-start">
+                        <label className='lg:block hidden'>Image 2:</label>
                         <div className="mt-[6px] flex justify-center">
                             <div className="relative w-[210px] h-[210px] border-[2px] border-dashed border-[#989494] cursor-pointer bg-[#fff]">
                                 <input
@@ -258,8 +258,8 @@ function Train() {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col items-end lg:items-start">
-                        <label>Image 3:</label>
+                    <div className="flex flex-col items-center lg:items-start">
+                        <label className='lg:block hidden'>Image 3:</label>
                         <div className="mt-[6px] flex justify-center">
                             <div className="relative w-[210px] h-[210px] border-[2px] border-dashed border-[#989494] cursor-pointer bg-[#fff]">
                                 <input
@@ -281,8 +281,8 @@ function Train() {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col items-end lg:items-start">
-                        <label>Image 4:</label>
+                    <div className="flex flex-col items-center lg:items-start">
+                        <label className='lg:block hidden'>Image 4:</label>
                         <div className="mt-[6px] flex justify-center">
                             <div className="relative w-[210px] h-[210px] border-[2px] border-dashed border-[#989494] cursor-pointer bg-[#fff]">
                                 <input

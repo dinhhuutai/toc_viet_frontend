@@ -32,7 +32,7 @@ function Comment({ getData, currentPage, id, star, percentStar }) {
                 <span className="text-[16px] font-[500]">Đánh giá của khách hàng</span>
             </div>
             <div className="flex items-center justify-between mt-[10px] mb-[16px]">
-                <div>
+                <div className='flex-1'>
                     {commentsLength ? (
                         <div className="flex items-center">
                             <p className="text-[24px] text-[#b97e3b] font-[450]">{star} <span className='text-[16px]'>/ 5</span></p>

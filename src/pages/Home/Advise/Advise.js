@@ -6,7 +6,7 @@ function Advise() {
     const data = useSelector(introduceSelector);
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[40px] mt-[50px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[40px]">
             <div>
                 <h1 className="text-[20px] font-[650] uppercase text-linear w-fit border-b-[2px] border-solid border-b-[#b97e3b]">Bạn cần tư vấn</h1>
                 <div className="mt-[20px]">

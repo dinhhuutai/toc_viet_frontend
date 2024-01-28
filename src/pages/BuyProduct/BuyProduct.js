@@ -43,8 +43,10 @@ function BuyProduct() {
         try {
             if (!phone.trim()) {
                 setValidPhone(true);
+                return;
             } else if (!address.trim()) {
                 setValidAddress(true);
+                return;
             }
 
             setLoadingCreate(true);
@@ -66,9 +68,9 @@ function BuyProduct() {
     };
 
     return (
-        <div className="bg-[#f5f5f5] grid grid-cols-2 px-[80px] gap-[20px] w-full min-h-screen py-[20px]">
+        <div className="bg-[#f5f5f5] grid grid-cols-1 lg:grid-cols-2 px-[10px] lg:px-[80px] lg:gap-[20px] w-full lg:min-h-screen py-[20px]">
             <div className="">
-                <div className="flex bg-[#fff] boxShadownHeader py-[30px] px-[40px] h-fit">
+                <div className="flex bg-[#fff] boxShadownHeader lg:py-[30px] lg:px-[40px] py-[20px] px-[20px] h-fit">
                     <div className="h-[100px] w-[100px] overflow-hidden rounded-[2px] border-[1px] border-solid border-[#333]">
                         <img className="w-full h-full" alt={data?.name} src={data?.image} />
                     </div>
@@ -84,7 +86,7 @@ function BuyProduct() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col mt-[20px] bg-[#fff] boxShadownHeader py-[30px] px-[40px] h-fit">
+                <div className="flex flex-col mt-[20px] bg-[#fff] boxShadownHeader lg:py-[30px] lg:px-[40px] py-[20px] px-[20px] h-fit">
                     <p className="text-[#e24141]">
                         * Salon Tóc Việt sẽ liên hệ với bạn trong vài giờ tới khi bạn{' '}
                         <span className="font-[500]">xác nhận mua hàng</span>.
@@ -103,7 +105,7 @@ function BuyProduct() {
                     </p>
                 </div>
             </div>
-            <div className="bg-[#fff] boxShadownHeader py-[30px] px-[40px] h-fit">
+            <div className="bg-[#fff] boxShadownHeader mt-[20px] lg:mt-[0px] py-[20px] px-[20px] lg:py-[30px] lg:px-[40px] h-fit">
                 <div className="flex items-end">
                     <label className="min-w-[60px]">Phone:</label>
                     <input

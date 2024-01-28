@@ -145,7 +145,7 @@ function CartService({ data, type }) {
                             .toString()
                             .replace(/\B(?=(\d{3})+(?!\d))/g, '.')} vnđ`}</p>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex lg:flex-row lg:gap-[0px] gap-[4px] lg;mt-[0px] mt-[4px] flex-col-reverse justify-between">
                         {data.comment.length ? (
                             <div className="flex justify-between items-center">
                                 <p className="text-[14px] font-[600]">{star}</p>
@@ -187,7 +187,7 @@ function CartService({ data, type }) {
                         )}
                         <Link
                             to={`${config.routes.productDetail}/${data._id}`}
-                            className="flex justify-between items-center cursor-pointer text-[#b97e3b] hover:underline"
+                            className="hidden lg:flex justify-between items-center cursor-pointer text-[#b97e3b] hover:underline"
                         >
                             Bình luận
                             <div className="text-[10px] ml-[4px] mt-[2px]">

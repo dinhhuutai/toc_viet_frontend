@@ -46,13 +46,13 @@ function ProductDetail() {
 
     return (
         <div className="bg-[#f5f5f5] w-full min-h-screen py-[20px]">
-            <div className="bg-[#fff] boxShadownHeader mx-[80px] py-[30px] px-[40px] rounded-[2px] grid grid-cols-3">
+            <div className="bg-[#fff] boxShadownHeader lg:mx-[80px] mx-[10px] lg:py-[30px] py-[20px] px-[10px] lg:px-[40px] rounded-[2px] grid grid-cols-1 lg:grid-cols-3">
                 <div className="flex justify-center">
                     <div className="w-[300px] h-[300px] border-[1px] border-solid border-[#bab5b5] overflow-hidden rounded-[2px]">
                         <img className="w-full h-full object-cover" alt={`toc_viet_${datas.name}`} src={datas.image} />
                     </div>
                 </div>
-                <div className="col-span-2">
+                <div className="col-span-2 lg:mt-[0px] mt-[10px]">
                     <div className="ml-[20px]">
                         <div>
                             <span className="text-[20px] font-[600] uppercase">{datas.name}</span>
@@ -113,7 +113,7 @@ function ProductDetail() {
                             </div>
                         </div>
                         <div className="mt-[20px]">
-                            <label>Mô tả dịch vụ:</label>
+                            <label className='font-[600]'>Mô tả dịch vụ:</label>
                             <div className={`${hiddenInfo ? 'h-[100px] overflow-hidden after:content-[""] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[30px] after:linearInfo' : 'h-fit'} relative`}>
                                 <p dangerouslySetInnerHTML={{ __html: datas.description }}></p>
                             </div>
@@ -126,7 +126,7 @@ function ProductDetail() {
                     </div>
                 </div>
             </div>
-            <div className="bg-[#fff] boxShadownHeader mx-[80px] mt-[10px] py-[20px] px-[40px] rounded-[2px]">
+            <div className="bg-[#fff] boxShadownHeader lg:mx-[80px] mx-[10px] mt-[10px] lg:py-[20px] py-[10px] px-[10px] lg:px-[40px] rounded-[2px]">
                 <Comment getData={getData} currentPage={currentPage} id={id} star={star} percentStar={percentStar} />
                 {datas.comment?.length ? (
                     <Pagination

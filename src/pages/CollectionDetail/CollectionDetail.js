@@ -65,7 +65,7 @@ function CollectionDetail() {
                     ))}
                 </div>
             </div>
-            <div className="bg-[#fff] mx-[80px] mt-[10px] py-[20px] px-[40px] rounded-[2px]">
+            <div className="bg-[#fff] boxShadownHeader lg:mx-[80px] mx-[10px] mt-[20px] lg:py-[20px] py-[10px] px-[10px] lg:px-[40px] rounded-[2px]">
                 <Comment getData={getData} currentPage={currentPage} id={id} star={star} percentStar={percentStar} />
                 {datas.comment?.length ? (
                     <Pagination
