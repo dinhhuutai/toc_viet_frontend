@@ -54,7 +54,7 @@ function CartService({ data, type }) {
                 } overflow-hidden rounded-t-[10px] cursor-pointer relative block`}
             >
                 <img
-                    className="hover:scale-[1.1] transition-all linear duration-[.4s] w-full h-full object-cover"
+                    className="hover:scale-[1.1] transition-all linear duration-[.4s] w-full h-full object-contain"
                     alt="toc_viet"
                     src={`${type !== 'service' && type !== 'product' ? data.images[0] : data.image}`}
                 />

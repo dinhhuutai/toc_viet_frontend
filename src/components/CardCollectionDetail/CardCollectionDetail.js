@@ -24,7 +24,7 @@ function CartService({ data }) {
                 className={`w-full h-[300px] overflow-hidden rounded-[10px] cursor-pointer relative block`}
             >
                 <img
-                    className="hover:scale-[1.1] transition-all linear duration-[.4s] w-full h-full object-cover"
+                    className="hover:scale-[1.1] transition-all linear duration-[.4s] w-full h-full object-contain"
                     alt="toc_viet"
                     src={data}
                 />
